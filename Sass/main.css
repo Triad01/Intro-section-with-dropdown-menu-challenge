@@ -14,9 +14,15 @@ body {
   font-weight: normal;
   font-size: 1rem;
   color: hsl(0deg, 0%, 41%);
-  background-color: hsl(0deg, 0%, 98%);
   min-height: 100vh;
   overflow-x: hidden;
+  background: transparent;
+  -webkit-backdrop-filter: blur(1px);
+          backdrop-filter: blur(1px);
+}
+
+.blur {
+  background-color: rgba(0, 0, 255, 0);
 }
 
 .flex {
@@ -28,9 +34,6 @@ body {
   width: 100%;
   display: flex;
   justify-content: space-between;
-}
-.main-nav .btn__actions {
-  transform: translateX(35rem);
 }
 .main-nav .btn__actions .btn__login, .main-nav .btn__actions .btn__register {
   background-color: inherit;
@@ -46,6 +49,12 @@ body {
   padding: 0 1rem;
   width: 6rem;
   height: 2rem;
+}
+.main-nav .btn__actions .btn__register:hover {
+  border: 2px solid hsl(0deg, 0%, 8%);
+}
+.main-nav .btn__actions .btn__login:hover {
+  color: hsl(0deg, 0%, 8%);
 }
 
 .logo {
@@ -67,7 +76,6 @@ body {
 }
 .primary-navigation a {
   text-decoration: none;
-  font-weight: 700;
   font-size: 0.9rem;
   -webkit-margin-end: 0.5em;
           margin-inline-end: 0.5em;
@@ -77,7 +85,7 @@ body {
 /* mobile styling(max-width:625px) */
 @media (max-width: 35em) {
   .primary-navigation {
-    --gap: 2em;
+    --gap: 1.5em;
     position: fixed;
     z-index: 1000;
     inset: 0 0 0 30%;
@@ -86,8 +94,23 @@ body {
     transform: translateX(100%);
     transition: transform 350ms ease-in-out;
     background: #fff;
+    -webkit-backdrop-filter: blur(1rem);
+            backdrop-filter: blur(1rem);
   }
   .primary-navigation .sub-menu__1, .primary-navigation .sub-menu__2 {
+    padding: 1rem;
+    font-size: 2rem;
+    font-weight: 100;
+    z-index: 999;
+  }
+  .primary-navigation .sub-menu__1 ul, .primary-navigation .sub-menu__2 ul {
+    list-style: none;
+  }
+  .primary-navigation .sub-menu__1 ul a, .primary-navigation .sub-menu__2 ul a {
+    cursor: pointer;
+    font-weight: 100;
+  }
+  .primary-navigation .sub1hidden, .primary-navigation .sub2hidden {
     display: none;
   }
   .primary-navigation[data-visible=true] {
@@ -109,6 +132,18 @@ body {
   }
   .mobile-nav-toggle[aria-expanded=true] {
     background-image: url("../images/icon-close-menu.svg");
+  }
+  .btn__actions {
+    transform: translateX(0);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .btn__actions button {
+    margin: 0.5rem;
+  }
+  .btn__actions .btn__register {
+    width: 8rem !important;
   }
 }
 @media (min-width: 35em) {
@@ -137,6 +172,9 @@ body {
   text-align: center;
   padding-bottom: 1rem;
   font-size: 2.5rem;
+}
+.main-wrap h1 span {
+  margin-left: 10px;
 }
 .main-wrap p {
   text-align: center;
@@ -181,6 +219,9 @@ body {
 }
 
 @media (min-width: 768px) {
+  .btn__actions {
+    transform: translateX(35rem);
+  }
   .sub-menu__1, .sub-menu__2 {
     width: 9rem;
     height: 9.5rem;
@@ -209,6 +250,9 @@ body {
     width: 9rem;
     height: 8rem;
   }
+  .primary-navigation li:not(:nth-child(3)) a:hover {
+    color: hsl(0deg, 0%, 8%);
+  }
   .primary-navigation li:hover .sub-menu__1 {
     display: block;
   }
@@ -230,12 +274,15 @@ body {
   }
   .container .header__hero--img {
     max-width: 30rem;
-    height: 30rem;
+    height: 25rem;
     transform: translateY(-3rem);
   }
   .container .main-wrap {
     width: 50%;
     order: 1;
+  }
+  .container .main-wrap .main-article {
+    transform: translateY(-1rem);
   }
   .container .main-wrap h1 {
     font-size: 4rem;
@@ -248,21 +295,32 @@ body {
   }
   .container .main-wrap p {
     transform: translateX(1.8rem);
-    font-size: 1rem;
+    font-size: 0.8rem;
     font-weight: 400;
     text-align: start;
     width: 70%;
     line-height: 1.7;
-    margin-bottom: 2rem;
+    margin-bottom: 0.8rem;
   }
   .container .main-wrap button {
     transform: translateX(2.8rem);
     height: 3rem;
     width: 10rem;
-    padding-top: 0.5rem;
+    padding-top: 0.8rem;
+    margin-bottom: 2rem;
     font-size: 1rem;
   }
+  .container .main-wrap button:hover {
+    background: #fff;
+  }
+  .container .main-wrap button:hover a {
+    color: hsl(0deg, 0%, 8%);
+    cursor: pointer;
+  }
   .footer__images img {
-    transform: translateX(1rem);
+    transform: translate(1rem, -1rem);
+  }
+  .footer__attribution {
+    transform: translate(-2rem, -2rem);
   }
 }/*# sourceMappingURL=main.css.map */
